@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+.container{
+    max-width: 1440px;
+    width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.nav-container{
+    max-width: 1440px;
+    width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.inter{
+    font-family: "Inter", sans-serif;
+  }
+
+
+
+
+
+

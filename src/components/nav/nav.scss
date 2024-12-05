@@ -1,0 +1,178 @@
+
+
+
+.active-link{
+    font-weight: bold;
+    color: #196aa0;
+    border-bottom: 2px solid #196aa0;
+  }
+
+  .navbarMob{
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    background-color: #ffffff7c;
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    padding: 10px 50px;
+    transition: .5s;
+  }
+
+  .navBurger{
+    display: none;
+  }
+
+
+
+.navCloseBtn{
+    display: none;
+}
+
+
+  .phoneMob{
+        display: none;
+  }
+
+  @media screen and (max-width: 1279px) {
+    .navbarMob{
+        gap: 40px;
+        padding: 8px 25px;
+    }
+
+    .callBtn{
+        border-radius: 8px;
+    }
+
+    .call-info{
+        padding: 4px;
+        border-radius: 6px;
+
+        
+
+        span{
+            font-size: 14px;
+        }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .navbarMob{
+        gap: 30px;
+        padding: 4px 25px;
+        font-size: 14px;
+    }
+
+    .callBtn{
+        border-radius: 8px;
+    }
+
+    .call-info{
+        padding: 4px;
+        border-radius: 6px;
+        gap: 2px;
+
+        
+
+        span{
+            font-size: 12px;
+        }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .navbarMob{
+        gap: 20px;
+        padding: 4px 25px;
+        font-size: 14px;
+    }
+
+    .callBtn{
+        border-radius: 8px;
+    }
+
+    .call-info{
+        padding: 4px;
+        border-radius: 6px;
+
+        
+
+        span{
+            font-size: 10px;
+        }
+    }
+  }
+
+  @media screen and (max-width: 770px) {
+    .navCloseBtn{
+        display: block;
+    }
+    .navbarMob{
+        flex-direction: column;
+        position: fixed;
+        height: 100vh;
+        // width: ;
+        top: 0;
+        right: -300px;
+    }
+    .navbarMobOpen{
+        display: block;
+        position: fixed;
+        width: 240px;
+        height: 100vh;
+        right: 0;
+        top: 0px;
+        padding: 80px 20px 20px 30px;
+        background-color: rgba(255, 255, 255, 0.71);
+        transition: .5s;
+        box-shadow: -10px 0px 100px rgba(0, 0, 0, 0.31);
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+
+        li{
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .navbarDropdown{
+            padding: 0;
+            font-size: 16px;
+        }
+    }
+
+    
+    .callBtn{
+        display: none;
+        
+    }
+
+    .phoneMob{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+
+    .navBurger{
+        display: block;
+        padding-right: 20px;
+    }
+
+
+  }
+
+  @media screen and (max-width: 350px){
+    .phoneMob{
+        padding: 5px;
+        a{
+            font-size: 12px;
+            padding: 10px 5px;
+            border-radius: 6px;
+        }
+    }
+  }
+
+  
+  

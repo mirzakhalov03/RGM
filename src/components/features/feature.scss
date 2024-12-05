@@ -1,0 +1,29 @@
+.feature__wrapper{
+    width: 100%;
+    gap: 100px;
+    display: flex;
+    justify-content: center;
+    
+
+
+
+}
+
+@media screen and (max-width: 1023px) {
+    .feature__wrapper{
+        flex-wrap: wrap;
+        gap: 120px;
+    }
+}
+
+
+
+@media screen and (max-width: 680px) {
+    .feature__wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+
+    }
+}

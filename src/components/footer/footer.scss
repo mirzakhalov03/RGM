@@ -1,0 +1,136 @@
+.footer{
+    min-height: 150px;
+    padding-top: 30px;
+    background-image: linear-gradient(to right bottom, #509fed, #56a3ef, #5ba6f1, #61aaf3, #66aef5, #63aaee, #60a7e8, #5da3e1, #5197d1, #458bc1, #397fb1, #2d73a2);
+
+    .footerWrapper{
+        color: white;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+
+        .footerInfo{
+            width: 300px;
+        }
+
+        .footerSocials{
+            width: 120px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+
+            
+        }
+    }
+
+    .socialIcon{
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        background-color: white;
+        border: 2px solid dodgerblue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .3s all;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.283);
+
+        
+    }
+
+    .iconMob:hover{
+        transform: scale(110%);
+        box-shadow: 0 10px 10px rgba(6, 67, 200, 0.228);
+    }
+
+
+}
+
+.footerSocialsMob{
+    display: none;
+}
+
+.footerInfoMob{
+    display: none;
+}
+
+
+@media screen and (max-width: 590px) {
+    .footer{
+        .footerWrapper{
+            align-items: center;
+            .footerSocials{
+                display: none;
+            }
+
+            .footerInfo{
+                width: 200px;
+                p{
+                    padding-top: 10px;
+                    font-size: 14px;
+                    text-align: right;
+                }
+            }
+        }
+
+        .footerSocialsMob{
+            padding-top: 20px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .footer{
+        .footerWrapper{
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            .footerSocials{
+                display: none;
+            }
+
+            .footerLogo{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 30px;
+
+                a{
+                    font-size: 14px;
+                    text-decoration: underline;
+                }
+            }
+
+            .footerInfo{
+                width: 300px;
+                p{
+                    padding-top: 10px;
+                    font-size: 14px;
+                    text-align: center;
+                }
+            }
+        }
+
+        .socialIcon{
+            width: 40px;
+            height: 40px;
+
+            .text-\[30px\]{
+                font-size: 20px;
+            }
+            img{
+                width: 20px;
+            }
+        }
+
+       
+    }
+}

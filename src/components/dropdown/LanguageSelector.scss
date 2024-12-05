@@ -1,0 +1,38 @@
+#language-selector {
+    font-family: Arial, sans-serif;
+    background-color: transparent;
+    cursor: pointer;
+    padding-left: 30px;
+    font-size: 16px;
+
+    &.uz {
+        background-image: url('https://flagicons.lipis.dev/flags/4x3/uz.svg');
+    }
+    &.ru {
+        background-image: url('https://flagicons.lipis.dev/flags/4x3/ru.svg');
+    }
+    &.en {
+        background-image: url('https://flagicons.lipis.dev/flags/4x3/us.svg');
+    }
+
+    background-position: left center;
+    background-repeat: no-repeat;
+
+    option {
+        padding-left: 30px; 
+        background-repeat: no-repeat;
+        background-position: left center;
+
+        &[value="uz"] {
+            background-image: url('https://flagicons.lipis.dev/flags/4x3/uz.svg');
+        }
+
+        &[value="ru"] {
+            background-image: url('https://flagicons.lipis.dev/flags/4x3/ru.svg');
+        }
+
+        &[value="en"] {
+            background-image: url('https://flagicons.lipis.dev/flags/4x3/us.svg');
+        }
+    }
+}

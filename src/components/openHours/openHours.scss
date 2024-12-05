@@ -1,0 +1,15 @@
+.openHours{
+    .openHoursBox{
+        width: 300px;
+        padding: 12px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .openHours{
+        .openHoursBox{
+            padding: 8px 5px;
+        }
+    }
+    
+}

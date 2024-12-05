@@ -1,0 +1,84 @@
+
+
+.callBtn {
+    --background: linear-gradient(to right, #88c3ff 0%, #0690da 100%);
+    padding: 3px;
+    border-radius: 12px;
+    background: var(--background);
+    position: relative;
+    z-index: 1;
+    transition: 0.5s ease;
+}
+
+.callBtn::after {
+    position: absolute;
+    content: "";
+    top: 10px;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    transform: scale(0.8);
+    filter: blur(25px);
+    background: var(--background);
+    transition: opacity 0.5s;
+}
+
+.call-info {
+    padding: 8px;
+    --color: #ffffff;
+    background: var(--color);
+    color: dodgerblue;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    border-radius: 10px;
+}
+
+.callBtn:hover::after {
+    opacity: 0;
+}
+
+.callBtn:hover .call-info {
+    background-color: transparent;
+    color: white;
+    backdrop-filter: blur(20px);
+    transition: 0.5s;
+}
+
+.icons{
+    color: #48C25D;
+    display: flex;
+    padding: 3px;
+
+}
+
+.callBtn:hover .icons {
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: white;
+    color: var(--green);
+}
+
+.phone-icon{
+    color: #48C25D;
+}
+
+.callBtn:hover .phone-icon {
+    animation: shake 0.5s ease-in-out infinite;
+    color: #ffffff;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+}

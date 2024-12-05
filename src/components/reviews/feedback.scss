@@ -1,0 +1,97 @@
+
+
+.feedbackCardWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.feedbackCard{
+    width: 400px;
+    min-height: 200px;
+    border-radius: 16px;
+    background-color: transparent;
+    box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px;
+    position: relative;
+    border-top: 2px solid #509eedaf;
+    border-bottom: 2px solid #509eedaf;
+    overflow: hidden;
+    display: flex;
+    background-image:  repeating-radial-gradient(circle at 0 0, transparent 0, #ffffff 77px), repeating-linear-gradient(rgba(26, 107, 161, 0), rgba(81, 159, 237, 0.07));
+    background-color: #ffffff;
+
+    
+
+    .avatar{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar_img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            color: var(--headline);
+        }
+    }
+
+    
+
+    .feedback-quote{
+        top: 20px;
+        font-size: 30px;
+        color: rgba(130, 127, 127, 0.869);
+
+        
+    }
+
+    .feedback-content{
+        width: 300px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .quote{
+            color: var(--p);
+            min-height: 100px;
+
+        }
+
+    }
+
+    .bottom-quote{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .author{
+            opacity: .4;
+        }
+
+        
+
+    
+    }
+}
+
+.buttonGlow{
+    background-image: linear-gradient(360deg, var(--headline), var(--softBlue));
+    color: white;
+}
+
+
+
+

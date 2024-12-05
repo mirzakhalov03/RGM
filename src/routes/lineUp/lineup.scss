@@ -1,0 +1,169 @@
+.lineup{
+    width: 100%;
+    padding: 100px 0;
+    background-image: linear-gradient(to right bottom , #ffffff, #f8f8ff, #edf2ff, #e0edfe, #d1e9fd, #d1e9fd, #d1e9fd, #d1e9fd, #e0edfe, #edf2ff, #f8f8ff, #ffffff);
+
+    .lineup_wrapper{
+        max-width: 700px;
+        margin: 0 auto;
+        
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+        border: 2px solid white;
+        border-radius: 12px;
+        padding: 30px;
+
+
+    }
+
+    .lineupSide{
+        width: 100%;
+        height: 100%;
+
+        h3{
+            color: var(--softBlue);
+            font-size: 18px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--softBlue);
+        }
+
+        
+
+    }
+
+    .times_wrapper{
+        max-width: 500px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 20px;
+        justify-content: center;
+        gap: 20px;
+        transition: .3s ease-in;
+
+        button{
+        transition: .2s ease;
+            
+        }
+
+        
+
+        .time_tag{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 35px;
+            border-radius: 8px;
+            border: 2px solid limegreen;
+            background-color: #00ff0033;
+            color: rgb(51, 190, 51);
+            font-weight: 500;
+            // font-size: 18px;
+        }
+        .chosen{
+            background-color: rgba(30, 143, 255, 0.231);
+            color: dodgerblue;
+            border: 2px dashed dodgerblue;
+        }
+
+        // button:disabled {
+        //     opacity: 0.6;
+        //     cursor: not-allowed;
+        // }
+    }
+    .forms_wrapper{
+        width: 100%;
+        padding-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .nameInput{
+            width: 300px;
+        }
+
+        .phoneInput{
+            width: 300px;
+        }
+
+        button{
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border: 2px solid var(--softBlue);
+            border-radius: 8px;
+            background-color: var(--softBlue);
+            color: white;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        
+
+        
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .custom-datepicker  {
+        width: 100% !important; // Adjust for mobile
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .lineup{
+        .times_wrapper{
+            padding: 20px 0px;
+        }
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .lineup{
+        .times_wrapper{
+            // padding: 20px 0px;
+            gap: 15px;
+
+            .time_tag{
+                width: 80px;
+                height: 30px;
+                font-size: 14px;
+                border-radius: 6px;
+            }
+        }
+
+        
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .lineup{
+        .times_wrapper{
+            // padding: 20px 0px;
+            gap: 15px;
+
+            .time_tag{
+                width: 80px;
+                height: 30px;
+                font-size: 14px;
+                border-radius: 6px;
+            }
+        }
+
+        .forms_wrapper{
+            .nameInput{
+                width: 250px;
+            }
+    
+            .phoneInput{
+                width: 250px;
+            }
+        }
+    }
+}
+

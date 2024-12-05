@@ -1,0 +1,71 @@
+.serviceWrapper{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+}
+
+.serviceDropdown{
+    max-width: 400px;
+    width: 100%;
+    transition: .5s ease-in;
+    position: relative;
+    min-height: 250px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 5px 5px 10px  rgba(0, 0, 0, 0.256);
+    
+
+    .serviceTitle{
+        background-color: #509eed2e;
+        padding: 8px 0;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        color: var(--headline);
+
+        h3{
+            font-weight: 500;
+        }
+        
+    }
+
+    .serviceDesc{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+
+        p{
+            height: 130px;
+            overflow-y: auto;
+        }
+    }
+    .priceTag{
+        width: 150px;
+        margin: 0 auto;
+        padding: 8px 12px;
+        background-color: rgba(0, 255, 0, 0.2);
+        border-radius: 6px;
+        color: rgb(48, 194, 48);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+}
+
+@media screen and (max-width: 430px){
+    .serviceDropdown{
+        .serviceDesc{
+            p{
+                min-height: 140px;
+                overflow-y: visible;
+            }
+        }
+    }
+}

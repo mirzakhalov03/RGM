@@ -1,0 +1,15 @@
+.faq{
+    background-color: #fed;
+    min-height: 100vh;
+
+    .faq_wrapper{
+        width: 100%;
+        min-height: 600px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 45px;
+        flex-wrap: wrap;
+    }
+}

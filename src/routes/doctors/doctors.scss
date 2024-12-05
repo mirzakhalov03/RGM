@@ -1,0 +1,89 @@
+.doctors_wrapper{
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 100px;
+
+    .doctor_wrapperTop{
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        padding-bottom: 20px;
+    }
+
+    .doctor_wrapperBottom{
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .doctorsCard{
+        max-width: 360px;
+        width: 100%;
+        height: 350px;
+        background-color: white;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+
+    .doctor{
+        max-width: 550px;
+        width: 100%;
+    }
+
+    .mainDoctor{
+        border: 2px solid var(--yellow);
+        background-image:  repeating-radial-gradient(circle at 0 0, transparent 0, #ffffff 57px), repeating-linear-gradient(rgba(255, 228, 92, 0.1), rgba(255, 228, 92, 0.1));
+        background-color: #ffffff;
+    }
+
+    .otherDoctors{
+        background-image:  repeating-radial-gradient(circle at 0 0, transparent 0, #ffffff 51px), repeating-linear-gradient(rgba(0, 159, 245, 0.05), rgba(0, 178, 255, 0.05));
+        background-color: #ffffff;
+        border: 2px solid var(--headline);
+    }
+
+    .nurses{
+        height: 220px;
+    }
+
+
+
+    .doctor_desc{
+        min-height: 100px;
+        overflow-y: auto;
+    }
+
+}
+
+@media screen and (max-width:430px) {
+    .doctors_wrapper{
+        .doctor{
+            max-width: 360px;
+            width: 100%;
+        }
+        .nurses{
+            height: 240px;
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .doctors_wrapper{
+        .doctor{
+            max-width: 300px;
+            width: 100%;
+        }
+        .nurses{
+            height: 260px;
+        }
+    }
+}

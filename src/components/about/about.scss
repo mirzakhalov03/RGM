@@ -1,0 +1,124 @@
+.parallax{
+    max-width: 100%;
+    background-image: url('../../img/RGM_photos/rgm_hall2.jpg');
+    min-height: 400px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .centerWrapper{
+        max-width: 480px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        background: rgba(252, 252, 252, 0.75);
+        backdrop-filter: blur(10.8px);
+        border: 1px solid rgba(242, 237, 227, 0.64);
+        border-radius: 12px;
+        padding: 0 20px 30px 20px;
+    }
+
+    .homeAboutSectionWrapper{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        align-items: center;
+        
+
+
+        .homeAboutSection{
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--headline);
+            background-color: white;
+            border-radius: 12px;
+            border: 3px solid transparent;
+            box-shadow: 0 5px 3px 2px rgba(30, 143, 255, 0.3);
+            font-size: 40px;
+
+            p{
+                font-size: 16px;
+                font-weight: 600;
+                text-align: center;
+                margin-top: 10px;
+                line-height: 18px;
+            }
+
+        }
+    }
+}
+
+@media screen and (min-width: 770px) {
+    .parallax{
+        
+        .homeAboutSectionWrapper{
+            .homeAboutSection{
+                transition: .3s all;
+                
+                &:hover{
+                    border: 3px solid var(--green);
+                    color: var(--green);
+                    background-color: rgba(255, 255, 255, 0.625);
+                    transform: scale(110%);
+                    box-shadow: 0 0 0;
+                }
+
+                &:active{
+                    transform: scale(98%);
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (max-width: 500px) {
+    .parallax{
+        .centerWrapper{
+            max-width: 400px;
+
+            .h2-titles{
+                padding-bottom: 15px;
+            }
+
+            .homeAboutSectionWrapper{
+                flex-wrap: wrap;
+
+
+                gap: 10px;
+                .homeAboutSection{
+                    font-size: 30px;
+                    padding: 5px 10px;
+
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .parallax{
+        .centerWrapper{
+            max-width: 350px;
+
+            .homeAboutSectionWrapper{
+                flex-wrap: wrap;
+
+                gap: 15px;
+                .homeAboutSection{
+                    font-size: 20px;
+                    padding: 5px 10px;
+                    p{
+                        font-size: 15px;
+                        line-height: 10px;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+

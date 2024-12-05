@@ -1,0 +1,120 @@
+.location-bg{
+    width: 100%;
+    padding: 100px 0;
+    min-height: 90vh;
+    background-image: linear-gradient(to left bottom, #ffffff, #fdfdff, #f9fbfe, #f6f9fe, #f1f8fd, #ecf7fd, #e7f5fd, #e2f4fc, #dbf2fd, #d4f1fd, #cdeffe, #c6edff);
+}
+
+.location_glassMorph{
+    width: 90%;
+    margin: 0 auto;
+    height: 400px;
+    background-color: rgba(255, 255, 255, 0.423);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 20px;
+
+
+
+}
+
+.location_map{
+    width: 70%;
+    height: 100%;
+}
+
+.location_info{
+    width: 30%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+
+    h3{
+        text-align: center;
+    }
+
+    span{
+        display: flex;
+        width: 200px;
+        align-items: center;
+        gap: 10px;
+
+        p{
+            color: var(--softBlue);
+        }
+
+    }
+
+    .dividerStyle{
+        color: var(--headline);
+    }
+
+    .directionBtns{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: .2s ease-in;
+        a{
+            padding: 5px 10px;
+        transition: .2s ease-in;
+
+        }
+        .yandex{
+            border: 2px solid #FF4433;
+            border-radius: 8px;
+            background-color: #ff443318;
+
+        }
+
+        .googleMaps{
+            border: 2px limegreen solid;
+            border-radius: 8px;
+            gap: 6px;
+            // color: ;
+            background-color: rgba(30, 143, 255, 0.1);
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 1280px) {
+    .location_info{
+        .directionBtns{
+            flex-direction: column-reverse;
+        }
+    }
+    
+}
+
+@media screen and (max-width: 1023px) {
+    .location_glassMorph{
+        min-height: 750px;
+    }
+    .location_map{
+        width: 100%;
+        height: 50%;
+    }
+    .location_info{
+        width: 100%;
+
+        .directionBtns{
+            flex-direction: row;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .location_info{
+        padding: 20px 10px;
+        .directionBtns{
+            a{
+                padding: 5px 5px;
+                border-radius: 4px;
+            }
+        }
+    }
+}

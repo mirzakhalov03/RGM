@@ -1,0 +1,115 @@
+.post{
+    position: relative;
+    transition: .3s ease-in;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+        .photo_container{
+            height: 250px;
+            border-radius: 16px;
+            width: 100%;
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        }
+
+        .context{
+            min-height: 175px;
+        }
+        
+}
+
+.blogMob{
+    width: 100%;
+    display: flex;
+}
+
+.postMob{
+    max-width: 400px;
+    border-radius: 12px;
+
+    .postAvatarMob{
+        width: 40px;
+        height: 40px;
+    }
+
+    
+
+    .postIconMob{
+        width: 40px;
+        height: 40px;
+        color: var(--yellow);
+        transition: .2s ease-in;
+        position: absolute;
+        z-index: 2;
+        right: 20px;
+        border: 3px solid var(--yellow);
+    }
+    
+}
+
+
+@media screen and (min-width: 768px) {
+    .post:hover .postIconMob{
+        width: 90px;
+        background: rgba(255, 227, 91, 0.8);
+        backdrop-filter: blur(5px);
+        color: white;
+        color: var(--headline);
+        font-weight: 700;
+        border: var(--yellow) solid 3px;
+        
+    }
+
+    
+}
+
+
+
+@media screen and (max-width: 780px) {
+    .blogMob{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .postMob{
+
+        .title{
+            .postAvatarMob{
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+
+            .postTitleMob{
+                h3{
+                    font-size: 18px;
+                }
+            }
+
+            .postLikeMob{
+                width: 30px;
+                height: 30px;
+
+                .postHeart{
+                    font-size: 20px;
+                }
+
+            }
+        }
+
+        .context{
+            p{
+                font-size: 16px;
+            }
+        }
+        
+        
+    }
+}
