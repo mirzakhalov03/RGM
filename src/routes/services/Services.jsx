@@ -30,7 +30,7 @@ const Services = () => {
             <div className="serviceDesc">
               <p><b>{t("service_brief")} </b>{t("service_desc1")}</p>
               
-              <div className="priceTag"><b>+ 40 000 {t("sum")} </b></div>
+              <div className="priceTag"><b>+ 50 000 {t("sum")} </b></div>
             </div>
           </div>
           <div data-aos="fade-up" className="serviceDropdown">
