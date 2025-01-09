@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRoutes } from 'react-router-dom';
+import { Navigate, useRoutes } from 'react-router-dom';
 import Layout from './layout/Layout'; 
 import Home from './home/Home';
 import About from './about/About';
@@ -10,8 +10,16 @@ import Location from './location/Location';
 import LineUp from './lineUp/LineUp';
 import Logo from './logo/Logo';
 import SinglePost from './SinglePost/SinglePost';
+import Admin from './admin/Admin';
+import AdminPost from './admin/AdminPost';
+import AdminLineup from './admin/AdminLineup';
+import Auth from './auth/Auth';
+import Private from './Private/Private';
 
 const RouteController = () => {
+
+  const auth = localStorage.getItem('rgm_admin_token')
+
   return useRoutes([
     {
       path: "",
@@ -95,6 +103,31 @@ const RouteController = () => {
         </Layout>
       ),
     },
+    {
+      path: "admin",
+      element: <Private/>,
+      children: [
+        {
+          path: "",
+          element: <Admin/>,
+          children: [
+            {
+              path: "",
+              element: <AdminLineup/>
+            },
+            {
+              path: "post",
+              element: <AdminPost/>
+            }
+          ]
+        },
+        
+      ]
+    },
+    {
+      path: "auth",
+      element: auth ? <Navigate to='/admin'/> : <Auth/>
+    }
   ]);
 };
 

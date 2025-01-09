@@ -7,9 +7,10 @@ import Footer from "../../components/footer/Footer";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'moment/locale/uz'; 
-import locale from 'antd/locale/uz_UZ';  // Ant Design Uzbek locale
+import locale from 'antd/locale/uz_UZ';  
 
 const LineUp = () => {
+    const defaultDuration = 15;
     const { t } = useTranslation();
     const [formData, setFormData] = useState({
         selectedTime: "",
@@ -40,7 +41,7 @@ const LineUp = () => {
     };
 
     const disabledDate = (current) => {
-        return current && current.day() === 0; // Disable Sundays
+        return current && current.day() === 0; 
     };
 
     const handleSubmit = async (e) => {
@@ -56,15 +57,21 @@ const LineUp = () => {
         `;
 
         try {
-            const response = await fetch(import.meta.env.VITE_URL_LINEUP_API_BOT, {
+            const token = import.meta.env.VITE_ACCESS_TOKEN
+            const response = await fetch(' https://bookings.bekhruzbek.uz/v1/bookings', {
                 method: "POST",
                 headers: {
+                    Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    chat_id: import.meta.env.VITE_URL_LINEUP_CHAT_ID,
-                    parse_mode: "html",
-                    text: FormattedLineUp,
+                body: ({
+                    service_name: "General Consulting",
+                    customer_name: formData.fullName,
+                    customer_contact: formData.mobileNumber,
+                    booking_date: formData.selectedDate,
+                    start_time: formData.selectedTime,
+                    end_time: formData.selectedDate + defaultDuration,
+                    duration_minutes: defaultDuration 
                 }),
             });
 
