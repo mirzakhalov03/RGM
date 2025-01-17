@@ -13,7 +13,7 @@ const Auth = () => {
         console.log('Success:', values);
         if (values.name === 'rgm admin' && values.password === '7730') {
             toast.success('Login successful');
-            localStorage.setItem("rgm_admin_token", 'p0o9i8u7y6t5r4e3w2q1azsxdcfvgbhnjmk')
+            localStorage.setItem("rgm_admin_token", `${import.meta.env.VITE_ADMIN_TOKEN}`)
             setTimeout(() => {
                 navigate('/admin');
             }, 3000);
