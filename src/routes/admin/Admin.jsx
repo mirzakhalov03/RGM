@@ -1,26 +1,28 @@
 import { MdDateRange } from "react-icons/md"; 
 import { BiEdit } from "react-icons/bi"; 
-import React from 'react'
+import React, { useState } from 'react'
 import { Layout, Menu, theme } from 'antd';
 import { CgDarkMode } from 'react-icons/cg';
-import Trademark from '../../components/navLogo/Trademark';
 import { Link, Outlet } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import logo from '../../img/RGM-icon.png'
 
-const { Header, Content, Sider } = Layout;
+
+const { Header, Content } = Layout;
+
 
 const items = [
     {
         key: '1',
         icon: <MdDateRange />,
-        label: <Link to='lineup'>Manage visits</Link>
+        label: <Link to=''>Qabullar ro'yhati</Link>
 
     },
     {
         key: '2',
         icon: <BiEdit />,
-        label: <Link to='post'>Add Posts</Link>,
+        label: <Link to='post'>Post qo'yish</Link>,
     },
 ]
     
@@ -41,31 +43,42 @@ const Admin = () => {
   return (
     <div>
         <Layout>
-            <Sider
-                breakpoint="lg"
-                collapsedWidth="0"
-                onBreakpoint={(broken) => {
-                console.log(broken);
-                }}
-                onCollapse={(collapsed, type) => {
-                console.log(collapsed, type);
-                }}
-                style={{height: "100vh"}}
-                trigger={null}
-            >
-            <Link to='/' className="demo-logo-vertical w-full p-3 h-[80px] bg-[dodgeblue]">
-                <Trademark/>
-            </Link>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} items={items} />
-            </Sider>
+            
             <Layout>
             <Header
                 style={{
                     padding: 3,
                     height: '80px',
                     background: CgDarkMode,
-                }}
-            />
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'    
+
+                }}>
+                    <Link to='/'>
+                    <div className='trademark trademark-inAdmin '>
+                        <img className='trademark-icon' src={logo}/>
+                        <div className='flex flex-col'>
+                            <span className='trademark-logo trademark-logo-inAdmin'>RGM</span>
+                        </div>
+                    </div>
+                    </Link>
+                    <Menu
+                        theme="dark"
+                        mode="horizontal"
+                        defaultSelectedKeys={['1']}
+                        items={items}
+                        style={{
+                            flex: 1,
+                            minWidth: 0,
+                            borderRadius: borderRadiusLG
+                            
+                        }}
+                        className="rounded-3xl"
+                        />
+
+
+                </Header>
             <Content
             style={{
                 margin: '24px 16px 0',
@@ -74,7 +87,7 @@ const Admin = () => {
                 
             <div
                 style={{
-                padding: 24,
+                padding: 10,
                 minHeight: '89vh',
                 background: colorBgContainer,
                 borderRadius: borderRadiusLG,

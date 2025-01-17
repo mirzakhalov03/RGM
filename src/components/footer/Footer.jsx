@@ -16,7 +16,7 @@ const Footer = () => {
             <div className="footerWrapper">
                 <div className="footerLogo">
                     <Trademark/>
-                    <a href="https://maps.app.goo.gl/UhBuJeDEGukoHcPv6">
+                    <a target="_blank" href="https://maps.app.goo.gl/UhBuJeDEGukoHcPv6">
                         <address>{t("footerAddress")}</address>
                         <address>{t("footerAddress2")}</address>
                     </a>
@@ -31,7 +31,7 @@ const Footer = () => {
                     <a href="tel:+998945000509" target="_blank" className='socialIcon iconMob Message'>
                         <IoIosCall className="text-[30px] text-[--green]"/>
                     </a>
-                    <a href="#"  onClick={(e) => {alert(t("comingSoon"))}} className='socialIcon iconMob YouTube'>
+                    <a href="#" target="_blank"  onClick={(e) => {alert(t("comingSoon"))}} className='socialIcon iconMob YouTube'>
                         <FaYoutube className="text-[30px] text-[crimson]"/>
                     </a>
                     <a href="mailto:ravshanmirzahalov@gmail.com" target="_blank" className='socialIcon iconMob Gmail'>
@@ -46,10 +46,10 @@ const Footer = () => {
                 <a href="mailto:javohirmirzakhalov@gmail.com" target="_blank" className='socialIcon Gmail'>
                     <img src={gmail} className="w-[30px] h-[20p]" alt="" />
                 </a>
-                <a href=""  onClick={(e) => {alert(t("comingSoon"))}}  className='socialIcon YouTube'>
+                <a href="#"  target="_blank" onClick={(e) => {alert(t("comingSoon"))}}  className='socialIcon YouTube'>
                     <FaYoutube className="text-[30px] text-[crimson]"/>
                 </a>
-                <a href='https://t.me/rgm_clinic' className='socialIcon Telegram'>
+                <a target="_blank" href='https://t.me/rgm_clinic' className='socialIcon Telegram'>
                     <FaTelegramPlane className="text-[30px] text-[--softBlue]"/>
                 </a>
             </div>
@@ -57,7 +57,7 @@ const Footer = () => {
         <hr className="opacity-10 mt-[15px] mb-[10px]"/>
         <div className="container sm:flex items-center sm:justify-between  pb-[10px] text-[--lightP]">
             <span className='flex items-center justify-center gap-1 text-center sm:text-[16px] text-[13px]'>©️ {t("copyright")}</span>
-            <small className="flex items-center justify-center ">Developed by <a href="#" className="block pl-1 underline" >  Mirzakhalov Javohirbek</a></small>
+            <small className="flex items-center justify-center ">Developed by <a target="_blank" href="https://www.mirzakhalov.com" className="block pl-1 underline" >  Mirzakhalov Javohirbek</a></small>
         </div>
     </div>
   )

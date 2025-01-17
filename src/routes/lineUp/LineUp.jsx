@@ -2,15 +2,16 @@ import { GiArchiveRegister } from "react-icons/gi";
 import React, { useState } from 'react';
 import './lineup.scss';
 import { useTranslation } from 'react-i18next';
-import { ConfigProvider, DatePicker, Divider, Input } from "antd";
+import { ConfigProvider, DatePicker, Divider, Input, message, Select, Spin } from "antd";
 import Footer from "../../components/footer/Footer";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'moment/locale/uz'; 
-import locale from 'antd/locale/uz_UZ';  
+import locale from 'antd/locale/uz_UZ'; 
+import axios from "axios"; 
 
 const LineUp = () => {
-    const defaultDuration = 15;
+    const defaultDuration = 30; 
     const { t } = useTranslation();
     const [formData, setFormData] = useState({
         selectedTime: "",
@@ -18,6 +19,10 @@ const LineUp = () => {
         fullName: "",
         mobileNumber: "",
     });
+    const [availableTimes, setAvailableTimes] = useState([]); 
+    const [loading, setLoading] = useState(false);
+
+    const excludedTimes = ["09:00", "09:15", "09:30", "9:45", "10:00", "10:15", "10:30", "10:45", "12:00", "12:15", "12:30", "12:45"];
 
     const resetForm = () => {
         setFormData({
@@ -26,6 +31,7 @@ const LineUp = () => {
             fullName: "",
             mobileNumber: "",
         });
+        setAvailableTimes([]);
     };
 
     const handleTimeSelect = (time) => {
@@ -38,40 +44,58 @@ const LineUp = () => {
 
     const handleDateChange = (date, dateString) => {
         setFormData((prevData) => ({ ...prevData, selectedDate: dateString }));
+        fetchAvailableSlots(dateString); 
     };
 
     const disabledDate = (current) => {
         return current && current.day() === 0; 
     };
 
+    const fetchAvailableSlots = async (dateString) => {
+        if (!dateString) return;
+        setLoading(true); 
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_API}/available-slots/?duration_minutes=${defaultDuration}&date=${dateString}`, {
+                headers: {
+                    Authorization: `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+            const fetchedTimes = response?.data?.data?.available_slots || [];
+            const filteredTimes = fetchedTimes.filter((time) => !excludedTimes.includes(time));
+            setAvailableTimes(filteredTimes);
+        } catch (error) {
+            console.error(error);
+            toast.error(t("lineUp_slotsFetchError"));
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!formData.selectedTime || !formData.selectedDate) {
-            alert(t("lineUp_chooseTimeError"));
+            message.error(t("lineUp_chooseTimeError"));
             return;
         }
 
-        const FormattedLineUp = `
-            <b>Mijoz:</b> <i>${formData.fullName}</i>\n<b>Sana:</b> <i>${formData.selectedDate}</i>\n<b>Vaqt:</b> <i>${formData.selectedTime}</i>\n<b>Tel:</b> <i>+998 ${formData.mobileNumber}</i>
-        `;
-
         try {
-            const token = import.meta.env.VITE_ACCESS_TOKEN
-            const response = await fetch(' https://bookings.bekhruzbek.uz/v1/bookings', {
+            const token = import.meta.env.VITE_ACCESS_TOKEN;
+            const response = await fetch(import.meta.env.VITE_BACKEND_API, {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
-                body: ({
+                body: JSON.stringify({
                     service_name: "General Consulting",
                     customer_name: formData.fullName,
                     customer_contact: formData.mobileNumber,
                     booking_date: formData.selectedDate,
                     start_time: formData.selectedTime,
-                    end_time: formData.selectedDate + defaultDuration,
-                    duration_minutes: defaultDuration 
+                    end_time: formData.selectedDate, 
+                    duration_minutes: defaultDuration,
                 }),
             });
 
@@ -82,15 +106,52 @@ const LineUp = () => {
                 throw new Error(t("lineUp_registrationFailed"));
             }
 
-            console.log('Success response:', responseData);
-
             toast.success(t("lineUp_registrationSuccess"));
             resetForm();
 
         } catch (error) {
             toast.error(t("lineUp_registrationFailed"));
         }
+
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_URL_LINEUP_API_BOT}`, {
+                chat_id: import.meta.env.VITE_URL_LINEUP_CHAT_ID,
+                parse_mode: "html",
+                text: `
+                    <b>Ro'yhatga olindi:</b>\n\n<b>Mijoz: <i>${formData.fullName}</i></b>\n<b>Sana: <i>${formData.selectedDate}</i></b>\n<b>Vaqt: <i>${formData.selectedTime}</i></b>\n<b>Telefon: <i>${formData.mobileNumber}</i></b>
+                `,
+            })
+        } catch (error) {
+            console.error(error);
+        }
     };
+
+    const formatPhoneNumber = (value) => {
+        const digits = value.replace(/\D/g, ""); 
+        const length = digits.length;
+    
+        if (length <= 2) return digits; 
+        if (length <= 5) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`; 
+        if (length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2, 5)}-${digits.slice(5)}`; 
+        return `(${digits.slice(0, 2)}) ${digits.slice(2, 5)}-${digits.slice(5, 7)}-${digits.slice(7, 9)}`; 
+    };
+    
+    const handlePhoneChange = (e) => {
+        const { value } = e.target;
+        handleInputChange("mobileNumber", value);
+        const formattedValue = formatPhoneNumber(value); 
+        if (formattedValue !== value) {
+            handleInputChange("mobileNumber", formattedValue); 
+        }
+    };
+
+    const options = [
+        { value: "", label: "Select time", disabled: true }, 
+        ...availableTimes.map((time) => ({
+            value: time,
+            label: time,
+        })),
+    ];
 
     return (
         <>
@@ -111,15 +172,22 @@ const LineUp = () => {
                                 </ConfigProvider>
                             </div>
                             <div className="times_wrapper">
-                                {["13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"].map((time) => (
-                                    <button
-                                        key={time}
-                                        onClick={() => handleTimeSelect(time)}
-                                        className={`time_tag sm:hover:scale-105 ${formData.selectedTime === time ? "chosen" : ""}`}
-                                    >
-                                        {time}
-                                    </button>
-                                ))}
+                                {loading ? (
+                                    <div className="loading">
+                                        <Spin size="large" />
+                                    </div>
+                                ) : (
+                                    <Select
+                                        placeholder={t("lineUp_selectTime")}
+                                        onChange={handleTimeSelect}
+                                        style={{ width: "140px", height: "40px" }}
+                                        value={formData.selectedTime}
+                                        options={availableTimes.map((time) => ({
+                                            value: time,
+                                            label: time,
+                                        }))}
+                                    />
+                                )}
                             </div>
                             <br />
                             <h3 className='text-center'>{t("lineUp_register")}</h3>
@@ -141,13 +209,13 @@ const LineUp = () => {
                                         <small><span className='text-[10px] text-[crimson]'>*</span>{t("lineUp_registerMobile")}</small>
                                     </label>
                                     <Input
-                                        maxLength={9}
                                         addonBefore="+998"
+                                        maxLength={15} 
                                         required
-                                        placeholder="(xx)-xxx-xx-xx"
-                                        className='mb-[10px] phoneInput'
+                                        placeholder="(xx) xxx-xx-xx"
+                                        className="mb-[10px] phoneInput"
                                         value={formData.mobileNumber}
-                                        onChange={(e) => handleInputChange("mobileNumber", e.target.value)}
+                                        onChange={handlePhoneChange}
                                     />
                                 </span>
                                 <br />
@@ -157,7 +225,6 @@ const LineUp = () => {
                         <Divider><b>{t("lineUp_importantTitle")}</b></Divider>
                         <p className="mb-1">- {t("lineUp_important1")}</p>
                         <p className="mb-1">- {t("lineUp_important3")}</p>
-                        <p className="mb-1">- {t("lineUp_important4")}</p>
                         <p className="mb-1">- {t("lineUp_important5")}</p>
                         <p className="mb-1">- {t("lineUp_important6")} <a href="https://t.me/+GhpK0PHEeIdiZWJi" className="ml-3 sm:hover:text-[--softBlue] sm:hover:bg-[white] px-2 py-1 bg-sky-400 text-white rounded-lg" target="_blank">Telegram</a></p>
                         <p className="mt-4 text-center p-1 bg-[#ffffff8a] text-[crimson] rounded-lg"><b> {t("lineUp_important2")}</b></p>

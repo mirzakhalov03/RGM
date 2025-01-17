@@ -22,9 +22,6 @@ const Location = () => {
 
 
 
-
-  
-  
   
   
   return (
@@ -36,6 +33,7 @@ const Location = () => {
                     <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API}>
                       <div className="location_map">
                         <Map
+                        
                           zoom={15}
                           center={position}
                           mapId={import.meta.env.VITE_GOOGLE_MAPS_API}
@@ -82,93 +80,6 @@ const Location = () => {
 }
 
 export default Location
-
-
-
-
-
-// function Directions() {
-//   const map = useMap();
-//   const routesLibrary = useMapsLibrary("routes")
-//   const [directionsService, setDirectionsService] = useState()
-//   const [directionsRenderer, setDirectionsRenderer] = useState()
-//   const [routes, setRoutes] = useState([])
-//   const [routeIndex, setRouteIndex] = useState(0)
-//   const selected = routes[routeIndex]
-//   const leg = selected?.legs[0]
-
-//   useEffect(() => {
-//     if(!routesLibrary || !map ) return
-
-//     setDirectionsService(new routesLibrary.DirectionsService())
-//     setDirectionsRenderer(new routesLibrary.DirectionsRenderer({ map }))
-
-//   }, [routesLibrary, map])
-
-//   useEffect(() => {
-//     if(!directionsService || !directionsRenderer) return
-  
-//     directionsService.route({
-//       origin: { lat: 41.02722, lng: 71.84431 },
-//       destination: { lat: 41.02883, lng: 71.84867 },
-//       travelMode: google.maps.TravelMode.DRIVING,
-//       provideRouteAlternatives: true,
-//     }).then(response => {
-//       directionsRenderer.setDirections(response)
-//       setRoutes(response.routes)
-//     })
-//   }, [directionsService, directionsRenderer])
-
-//   console.log(routes)
-
-
-//   if(!leg) return null
-
-//   return (
-//     <div className="directions">
-//       <h2>{selected.summary}</h2>
-//       <p>{leg.start_address.split(",")[0]} to {leg.end_address.split(",")[0]}</p>
-//       <p>Distance: {leg.distance?.text}</p>
-//       <p>Duration: {leg.duration?.text}</p>
-
-//       <h2>Other routes</h2>
-//       <ul>
-//         {routes.map((route, index) => (
-//           <li
-//             key={route.summary}
-//             onClick={() => setRouteIndex(index)}
-//             className={routeIndex === index ? "active" : ""}
-//           >
-//             {route.summary}
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   )
-
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

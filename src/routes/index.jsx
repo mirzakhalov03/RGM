@@ -15,6 +15,7 @@ import AdminPost from './admin/AdminPost';
 import AdminLineup from './admin/AdminLineup';
 import Auth from './auth/Auth';
 import Private from './Private/Private';
+import SinglePage from './admin/customerSinglePage/SinglePage';
 
 const RouteController = () => {
 
@@ -118,7 +119,12 @@ const RouteController = () => {
             {
               path: "post",
               element: <AdminPost/>
+            },
+            {
+              path: ':id',
+              element: <SinglePage/>
             }
+          
           ]
         },
         
