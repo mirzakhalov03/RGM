@@ -1,3 +1,4 @@
+import { MdAdminPanelSettings } from "react-icons/md"; 
 import { GiHamburgerMenu } from "react-icons/gi"; 
 import { ImCross } from "react-icons/im"; 
 import { AiOutlineDown } from "react-icons/ai"; 
@@ -73,39 +74,44 @@ const Nav = () => {
         <div className='nav-container flex items-center justify-between'>
           <Link to="/"><Trademark /></Link>
           <div className="phoneMob">
-            <a href="tel:+998945000509" target="_blank" className="flex items-center gap-[5px] text-[14px] rounded-lg text-white bg-[dodgerblue] py-1 px-2">
-              <BiPhoneCall className=""/> 94 500 05 09
-            </a>
+            <button onClick={() => { navigate('/lineup')}} className="flex items-center gap-[5px] text-[14px] rounded-md text-white bg-[dodgerblue] py-1 px-2">
+              {t("heroBtn1")}
+            </button>
           </div>
           <div id="burgerBtnId" className="navBurger" onClick={handleBurgerToggle}>
             <GiHamburgerMenu className="text-[25px] text-[--headline]" /> 
           </div>
           <ul ref={navbarRef} id="navbarMobId" className={`navbarMob ${isNavbarOpen ? 'navbarMobOpen' : ''}`}>
-            <li>
-              <NavLink to="/" className={({ isActive }) => isActive ? 'active-link' : ''}>{t("nav1")}</NavLink>
-            </li>
-            <li>
-              <Dropdown menu={{ items: menuItems }} placement="bottom" arrow>
-                <Button
-                  className="navbarDropdown lg:text-[16px] bg-transparent border-none shadow-none"
-                  aria-haspopup="true"
-                  onClick={() => { navigate("/about"); }}
-                >
-                  {t("nav2")} <AiOutlineDown />
-                </Button>
-              </Dropdown>
-            </li>
-            <li>
-              <NavLink to="/services" className={({ isActive }) => isActive ? 'active-link' : ''}>{t("nav4")}</NavLink>
-            </li>
-            <li>
-              <NavLink to="/blog" className={({ isActive }) => isActive ? 'active-link' : ''}>{t("nav5")}</NavLink>
-            </li>
-            <li>
-              <LanguageSelector />
-            </li>
-            <button id="burgerClose" className="navCloseBtn absolute right-[35px] top-[35px]" onClick={handleBurgerClose}>
-              <ImCross className="text-[25px] text-[--headline]"/>
+            <div className="w-[100%] navListMob">
+              <li>
+                <NavLink to="/" className={({ isActive }) => isActive ? 'active-link' : ''}>{t("nav1")}</NavLink>
+              </li>
+              <li>
+                <Dropdown menu={{ items: menuItems }} placement="bottom" arrow>
+                  <Button
+                    className="navbarDropdown lg:text-[16px] bg-transparent border-none shadow-none"
+                    aria-haspopup="true"
+                    onClick={() => { navigate("/about"); }}
+                  >
+                    {t("nav2")} <AiOutlineDown />
+                  </Button>
+                </Dropdown>
+              </li>
+              <li>
+                <NavLink to="/services" className={({ isActive }) => isActive ? 'active-link' : ''}>{t("nav4")}</NavLink>
+              </li>
+              <li>
+                <NavLink to="/blog" className={({ isActive }) => isActive ? 'active-link' : ''}>{t("nav5")}</NavLink>
+              </li>
+              <li>
+                <LanguageSelector />
+              </li>
+              <button id="burgerClose" className="navCloseBtn absolute right-[35px] top-[35px]" onClick={handleBurgerClose}>
+                <ImCross className="text-[25px] text-[--headline]"/>
+              </button>
+            </div>
+            <button onClick={() => { navigate('/admin') }} className="NavAdminBtn">
+              {t("navAdmin")}  <MdAdminPanelSettings className="text-[20px] text-[dodgerblue]"/>
             </button>
           </ul>
           <a href="tel:+998945000509" target="_blank" className='callBtn'>

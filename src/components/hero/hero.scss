@@ -11,9 +11,12 @@
 .heroBtn1{
     background-image: linear-gradient(360deg, var(--headline), var(--softBlue));
     color: white;
-    padding: 8px 20px;
+    padding: 12px 24px;
     font-size: 16px;
     border-radius: 8px;
+    box-shadow: 0 0 10px rgba(61, 60, 60, 0.76);
+
+
 
     &:active{
         transform: scale(98%);
@@ -123,7 +126,7 @@
     }
 
     .heroBtn1{
-        padding: 4px 10px;
+        padding: 6px 12px;
         font-size: 14px;
     }
 

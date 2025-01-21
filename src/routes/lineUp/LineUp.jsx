@@ -11,7 +11,7 @@ import locale from 'antd/locale/uz_UZ';
 import axios from "axios"; 
 
 const LineUp = () => {
-    const defaultDuration = 30; 
+    const defaultDuration = 15; 
     const { t } = useTranslation();
     const [formData, setFormData] = useState({
         selectedTime: "",
@@ -22,7 +22,7 @@ const LineUp = () => {
     const [availableTimes, setAvailableTimes] = useState([]); 
     const [loading, setLoading] = useState(false);
 
-    const excludedTimes = ["09:00", "09:15", "09:30", "9:45", "10:00", "10:15", "10:30", "10:45", "12:00", "12:15", "12:30", "12:45"];
+    const excludedTimes = ["09:00", "09:15", "09:30", "09:45", "10:00", "10:15", "10:30", "10:45", "12:00", "12:15", "12:30", "12:45"];
 
     const resetForm = () => {
         setFormData({
@@ -101,9 +101,17 @@ const LineUp = () => {
 
             const responseData = await response.json(); 
 
-            if (!response.ok) {
-                console.error('Error response:', responseData);
-                throw new Error(t("lineUp_registrationFailed"));
+            
+
+            if (!response.ok) { 
+                if(response.status == 422){
+                    throw new Error(t("lineUp_registrationBusy"));
+                }
+                else{
+                    console.error('Error response:', responseData);
+                    throw new Error(t("lineUp_registrationFailed"));
+                }
+                
             }
 
             toast.success(t("lineUp_registrationSuccess"));
@@ -165,6 +173,7 @@ const LineUp = () => {
                             <div className="flex items-center sm:justify-center pt-2">
                                 <ConfigProvider locale={locale}>
                                     <DatePicker
+                                        
                                         onChange={handleDateChange}
                                         disabledDate={disabledDate}
                                         className="custom-datepicker border-2 border-[limegreen]"
@@ -178,10 +187,11 @@ const LineUp = () => {
                                     </div>
                                 ) : (
                                     <Select
+                                        className="custom-TimeSelect border-[1.5px] border-[limegreen] rounded-md outline-none"
                                         placeholder={t("lineUp_selectTime")}
                                         onChange={handleTimeSelect}
                                         style={{ width: "140px", height: "40px" }}
-                                        value={formData.selectedTime}
+                                        value={formData.selectedTime || null}
                                         options={availableTimes.map((time) => ({
                                             value: time,
                                             label: time,

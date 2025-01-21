@@ -83,9 +83,9 @@ const Reviews = () => {
             date={`${t("dateNovember")} 22` }
           />
           <FeedbackCard
-            text="Farzandimni ko‘rsatgani olib keldim. Bolalar odatda shifokorlardan qo‘rqishadi, lekin bu yerda ularni tinchlantirishga va muolajani e’tibor bilan o‘tkazishga harakat qilishadi. Tavsiya qilaman!"
-            author="Nodira Umarova"
-            date={`${t("dateNovember")} 24` }
+            text="Juda ham zo'r klinika barchaga tavsiya qilaman Shifokorlarning barchalari hushmomila, bemorning qulayliklariga alohida etibor berilgan. OMAD 'RGM THE BEST'✅👍🏻👂🏻"
+            author="Sardorbek Habibullayev"
+            date={`${t("dateDecember")} 5` }
           />
           <FeedbackCard
             text="Alloh ishlaringizga baraka bersin, Omin"

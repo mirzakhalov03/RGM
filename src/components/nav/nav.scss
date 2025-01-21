@@ -1,6 +1,4 @@
 
-
-
 .active-link{
     font-weight: bold;
     color: #196aa0;
@@ -10,6 +8,7 @@
   .navbarMob{
     display: flex;
     align-items: center;
+    
     gap: 60px;
     background-color: #ffffff7c;
     backdrop-filter: blur(5px);
@@ -17,6 +16,12 @@
     padding: 10px 50px;
     transition: .5s;
   }
+
+  .navListMob{
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
 
   .navBurger{
     display: none;
@@ -27,6 +32,19 @@
 .navCloseBtn{
     display: none;
 }
+.NavAdminBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 4px;
+    background-color: white;
+    width: 100%;
+    padding: 4px ;
+    display: none;
+}
+
+
 
 
   .phoneMob{
@@ -34,8 +52,10 @@
   }
 
   @media screen and (max-width: 1279px) {
+    .navListMob{
+        gap: 30px;
+    }
     .navbarMob{
-        gap: 40px;
         padding: 8px 25px;
     }
 
@@ -56,10 +76,13 @@
   }
 
   @media screen and (max-width: 1024px) {
-    .navbarMob{
-        gap: 30px;
-        padding: 4px 25px;
+    .navListMob{
+        gap: 25px;
+        padding: 4px 15px;
         font-size: 14px;
+    }
+    .navbarMob{
+        padding: 4px 15px;
     }
 
     .callBtn{
@@ -80,9 +103,12 @@
   }
 
   @media screen and (max-width: 900px) {
-    .navbarMob{
+    .navListMob{
         gap: 20px;
-        padding: 4px 25px;
+        font-size: 14px;
+    }
+    .navbarMob{
+        padding: 2px 10px;
         font-size: 14px;
     }
 
@@ -106,17 +132,27 @@
     .navCloseBtn{
         display: block;
     }
+    .NavAdminBtn{
+        display: flex;
+    }
+    .navListMob{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
     .navbarMob{
         flex-direction: column;
         position: fixed;
         height: 100vh;
-        // width: ;
         top: 0;
         right: -300px;
     }
     .navbarMobOpen{
-        display: block;
+        display: flex;
         position: fixed;
+        justify-content: space-between;
+        align-items: end;
         width: 240px;
         height: 100vh;
         right: 0;
@@ -157,7 +193,7 @@
 
     .navBurger{
         display: block;
-        padding-right: 20px;
+        padding-right: 10px;
     }
 
 
