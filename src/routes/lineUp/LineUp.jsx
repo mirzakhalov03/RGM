@@ -207,7 +207,7 @@ const LineUp = () => {
                                         <small><span className='text-[10px] text-[crimson]'>*</span>{t("lineUp_registerName")}</small>
                                     </label>
                                     <Input
-                                        placeholder="Full Name"
+                                        placeholder="Ism va Familiya"
                                         required
                                         className='mb-[15px] nameInput'
                                         value={formData.fullName}
