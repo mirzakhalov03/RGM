@@ -22,7 +22,7 @@ const LineUp = () => {
     const [availableTimes, setAvailableTimes] = useState([]); 
     const [loading, setLoading] = useState(false);
 
-    const excludedTimes = ["09:00", "09:15", "09:30", "09:45", "10:00", "10:15", "10:30", "10:45", "12:00", "12:15", "12:30", "12:45"];
+    const excludedTimes = ["12:00", "12:15", "12:30", "12:45"];
 
     const resetForm = () => {
         setFormData({
@@ -114,6 +114,18 @@ const LineUp = () => {
                 
             }
 
+            try {
+                const response = await axios.post(`${import.meta.env.VITE_URL_LINEUP_API_BOT}`, {
+                    chat_id: import.meta.env.VITE_URL_LINEUP_CHAT_ID,
+                    parse_mode: "html",
+                    text: `
+                        <b>Ro'yhatga olindi:</b>\n\n<b>Mijoz: <i>${formData.fullName}</i></b>\n<b>Sana: <i>${formData.selectedDate}</i></b>\n<b>Vaqt: <i>${formData.selectedTime}</i></b>\n<b>Telefon: <i>${formData.mobileNumber}</i></b>
+                    `,
+                })
+            } catch (error) {
+                console.error(error);
+            }
+
             toast.success(t("lineUp_registrationSuccess"));
             resetForm();
 
@@ -121,17 +133,7 @@ const LineUp = () => {
             toast.error(t("lineUp_registrationFailed"));
         }
 
-        try {
-            const response = await axios.post(`${import.meta.env.VITE_URL_LINEUP_API_BOT}`, {
-                chat_id: import.meta.env.VITE_URL_LINEUP_CHAT_ID,
-                parse_mode: "html",
-                text: `
-                    <b>Ro'yhatga olindi:</b>\n\n<b>Mijoz: <i>${formData.fullName}</i></b>\n<b>Sana: <i>${formData.selectedDate}</i></b>\n<b>Vaqt: <i>${formData.selectedTime}</i></b>\n<b>Telefon: <i>${formData.mobileNumber}</i></b>
-                `,
-            })
-        } catch (error) {
-            console.error(error);
-        }
+        
     };
 
     const formatPhoneNumber = (value) => {
