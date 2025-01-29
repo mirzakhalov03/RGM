@@ -16,6 +16,7 @@ import AdminLineup from './admin/AdminLineup';
 import Auth from './auth/Auth';
 import Private from './Private/Private';
 import SinglePage from './admin/customerSinglePage/SinglePage';
+import PublicList from './publicList/PublicList';
 
 const RouteController = () => {
 
@@ -61,6 +62,10 @@ const RouteController = () => {
           <Services />
         </Layout>
       ),
+    },
+    {
+      path: "publiclist",
+      element: <PublicList/>
     },
     {
       path: "blog",

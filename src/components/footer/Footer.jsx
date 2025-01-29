@@ -6,6 +6,7 @@ import React from 'react'
 import './footer.scss'
 import Trademark from '../navLogo/Trademark'
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     const {t} = useTranslation();
@@ -57,6 +58,7 @@ const Footer = () => {
         <hr className="opacity-10 mt-[15px] mb-[10px]"/>
         <div className="container sm:flex items-center sm:justify-between  pb-[10px] text-[--lightP]">
             <span className='flex items-center justify-center gap-1 text-center sm:text-[16px] text-[13px]'>©️ {t("copyright")}</span>
+            <span className="block text-center m-2 hover:scale-105 transition-all"><Link to='/admin' className="text-center  underline border border-[gold] text-[gold] rounded py-1  px-2 hover:shadow-lg ">Login as Admin</Link></span>
             <small className="flex items-center justify-center ">Developed by <a target="_blank" href="https://www.mirzakhalov.com" className="block pl-1 underline" >  Mirzakhalov Javohirbek</a></small>
         </div>
     </div>

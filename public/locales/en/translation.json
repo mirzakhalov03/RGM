@@ -37,7 +37,7 @@
     "footerAddress2": "Uychi, Namangan",
     "footerInfo": "\"Ra'no Grand Medical\" is a private clinic that offers ambulatory services to patients. ",
     "footerInfoBold": "RGM - harmony of Trust and Quality.",
-    "copyright": "Copyright 2024 RGM. All rights reserved.",
+    "copyright": "Copyright 2024 RGM",
     "aboutP1": " is a private clinic serving the community since 2018, offering outpatient and conservative treatment services.",
     "aboutP2-1": "Our doctors and specialists have many years of experience and are dedicated to providing reliable and high-quality treatment methods to the people. In particular, a highly qualified doctor,",
     "aboutP2-2": "with nearly 30 years of experience in the field, has been a great support in protecting the health of millions of our fellow citizens.",
@@ -99,7 +99,10 @@
     "dateNovember": "November",
     "dateDecember": "December",
     "dateOctober": "October",
-    "comingSoon": "Coming Soon"
+    "comingSoon": "Coming Soon",
+    "name": "Name",
+    "date": "Date",
+    "time": "Time"
 
 
 

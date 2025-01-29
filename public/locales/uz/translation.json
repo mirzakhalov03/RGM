@@ -37,7 +37,7 @@
     "footerAddress2": "Uychi, Namangan",
     "footerInfo": "\"Ra'no Grand Medical\" xususiy shifoxonasi bemorlarga ambulator xizmatlar ko‘rsatadi.",
     "footerInfoBold": "RGM - bu ishonch va sifat uyg'unligi",
-    "copyright": "Copyright 2024 RGM. Barcha huquqlar himoyalangan.",
+    "copyright": "Copyright 2024 RGM",
     "aboutP1": " 2018-yildan beri xalq xizmatida ishlab kelayotgan xususiy shifoxona hisoblanib, ambulator va konservativ davolash xizmatlarini taqdim etadi.",
     "aboutP2-1": "Shifokor va mutaxassislarimiz ko'p yillik ish tajribasiga ega bo'lib, ishonchli va sifatli davolash uslublarini xalqqa taqdim etishga bel bog'lashgan. Xususan, oliy toifali shifokor, ",
     "aboutP2-2": "sohaviy 30 yilga yaqin tajribalari bilan millionlab vatandoshlarimizga sog'liq himoyasida yaxshi ko'makchi bo'lib kelmoqdalar.",
@@ -99,7 +99,11 @@
     "dateNovember": "Noyabr",
     "dateDecember": "Dekabr",
     "dateOctober": "Oktabr",
-    "comingSoon": "Tez kunda"
+    "comingSoon": "Tez kunda",
+    "name": "Ism va Familiya",
+    "date": "Sana",
+    "time": "Vaqt"
+
 
 
 

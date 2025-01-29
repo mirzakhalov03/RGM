@@ -40,10 +40,10 @@ const columns = [
       const bookingDate = moment(date);
 
       if (bookingDate.isSame(today, 'day')) {
-        return <Tag style={{ backgroundColor: 'limegreen', color: 'white', border: 'none' }}>Today</Tag>; 
+        return <Tag style={{ backgroundColor: 'limegreen', color: 'white', border: 'none' }}>Bugun</Tag>; 
       }
       if (bookingDate.isSame(tomorrow, 'day')) {
-        return <Tag color="green">Tomorrow</Tag>;
+        return <Tag color="green">Ertaga</Tag>;
       }
       return <Tag color="geekblue">{bookingDate.format('MMM D')}</Tag>; 
     },

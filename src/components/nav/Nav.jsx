@@ -110,9 +110,7 @@ const Nav = () => {
                 <ImCross className="text-[25px] text-[--headline]"/>
               </button>
             </div>
-            <button onClick={() => { navigate('/admin') }} className="NavAdminBtn">
-              {t("navAdmin")}  <MdAdminPanelSettings className="text-[20px] text-[dodgerblue]"/>
-            </button>
+            
           </ul>
           <a href="tel:+998945000509" target="_blank" className='callBtn'>
             <span className="call-info">
