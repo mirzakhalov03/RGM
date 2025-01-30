@@ -27,7 +27,7 @@ const PublicList = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 5000);
+    const interval = setInterval(fetchData, 60000);
 
     return () => clearInterval(interval);
   }, []);
@@ -46,9 +46,9 @@ const PublicList = () => {
       </div>
 
       {isLoading ? (
-        <p className="text-center text-gray-600">Loading...</p>
+        <p className="text-center text-3xl text-gray-600 pt-[50px]">Loading...</p>
       ) : error ? (
-        <p className="text-center text-red-500">Error: {error.message}</p>
+        <p className="text-center text-red-500 pt-[50px]">Error: {error.message}</p>
       ) : (
         <TableComponent data={data?.data} />
       )}

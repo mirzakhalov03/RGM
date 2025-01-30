@@ -22,7 +22,7 @@ const Services = () => {
       <div className='container pt-[80px]'>
         <h2 className='h2-titles '>{t("service_headline")}</h2>
         <div className='mb-[50px] flex items-center justify-center hover:scale-105 transition-all cursor-pointer'>
-          <Link to="/publiclist" className='px-4  py-2 rounded-md bg-[--softBlue] text-[white] shadow-lg hover:shadow-2xl transition-all'>Online Navbat Ro'yxati</Link>
+          <Link to="/publiclist" className='px-4  py-2 rounded-md bg-[--softBlue] text-[white] shadow-lg hover:shadow-2xl transition-all'>{t("service_lineUpBtn")}</Link>
         </div>
         <div className="serviceWrapper">
           <div data-aos="fade-up" className="serviceDropdown">
