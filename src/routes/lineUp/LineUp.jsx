@@ -82,6 +82,21 @@ const LineUp = () => {
 
         try {
             const token = import.meta.env.VITE_ACCESS_TOKEN;
+            
+            // Add logic to calculate end time
+            const [hours, minutes] = formData.selectedTime.split(":").map(Number); // Extract hours and minutes
+            const endMinutes = minutes + 15; // Add 15 minutes
+
+            // Handle cases where minutes exceed 60
+            const newHours = hours + Math.floor(endMinutes / 60);
+            const newMinutes = endMinutes % 60;
+
+            // Format the result correctly as HH:MM:00
+            const endTime = `${String(newHours).padStart(2, "0")}:${String(newMinutes).padStart(2, "0")}:00`;
+
+            console.log("start time:", formData.selectedTime);
+            console.log("end_time:", endTime);
+
             const response = await fetch(import.meta.env.VITE_BACKEND_API, {
                 method: "POST",
                 headers: {
@@ -94,14 +109,12 @@ const LineUp = () => {
                     customer_contact: formData.mobileNumber,
                     booking_date: formData.selectedDate,
                     start_time: formData.selectedTime,
-                    end_time: formData.selectedDate, 
+                    end_time: endTime, // Use the calculated end time
                     duration_minutes: defaultDuration,
                 }),
             });
 
             const responseData = await response.json(); 
-
-            
 
             if (!response.ok) { 
                 if(response.status == 422){
@@ -111,20 +124,7 @@ const LineUp = () => {
                     console.error('Error response:', responseData);
                     throw new Error(t("lineUp_registrationFailed"));
                 }
-                
             }
-
-            // try {
-            //     const response = await axios.post(`${import.meta.env.VITE_URL_LINEUP_API_BOT}`, {
-            //         chat_id: import.meta.env.VITE_URL_LINEUP_CHAT_ID,
-            //         parse_mode: "html",
-            //         text: `
-            //             <b>Ro'yhatga olindi:</b>\n\n<b>Mijoz: <i>${formData.fullName}</i></b>\n<b>Sana: <i>${formData.selectedDate}</i></b>\n<b>Vaqt: <i>${formData.selectedTime}</i></b>\n<b>Telefon: <i>${formData.mobileNumber}</i></b>
-            //         `,
-            //     })
-            // } catch (error) {
-            //     console.error(error);
-            // }
 
             toast.success(t("lineUp_registrationSuccess"));
             resetForm();
@@ -132,8 +132,6 @@ const LineUp = () => {
         } catch (error) {
             toast.error(t("lineUp_registrationFailed"));
         }
-
-        
     };
 
     const formatPhoneNumber = (value) => {
@@ -175,7 +173,6 @@ const LineUp = () => {
                             <div className="flex items-center sm:justify-center pt-2">
                                 <ConfigProvider locale={locale}>
                                     <DatePicker
-                                        
                                         onChange={handleDateChange}
                                         disabledDate={disabledDate}
                                         className="custom-datepicker border-2 border-[limegreen]"
