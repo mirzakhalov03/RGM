@@ -115,6 +115,7 @@ const LineUp = () => {
             });
 
             const responseData = await response.json(); 
+        
 
             if (!response.ok) { 
                 if(response.status == 422){
@@ -124,6 +125,18 @@ const LineUp = () => {
                     console.error('Error response:', responseData);
                     throw new Error(t("lineUp_registrationFailed"));
                 }
+            }
+
+            try {
+                const response = await axios.post(`${import.meta.env.VITE_URL_LINEUP_API_BOT}`, {
+                    chat_id: import.meta.env.VITE_URL_LINEUP_CHAT_ID,
+                    parse_mode: "html",
+                    text: `
+                        <b>Ro'yhatga olindi:</b>\n\n<b>Mijoz: <i>${formData.fullName}</i></b>\n<b>Sana: <i>${formData.selectedDate}</i></b>\n<b>Vaqt: <i>${formData.selectedTime}</i></b>\n<b>Telefon: <i>${formData.mobileNumber}</i></b>
+                    `,
+                })
+            } catch (error) {
+                console.error(error);
             }
 
             toast.success(t("lineUp_registrationSuccess"));
