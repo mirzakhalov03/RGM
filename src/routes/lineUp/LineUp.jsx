@@ -83,15 +83,12 @@ const LineUp = () => {
         try {
             const token = import.meta.env.VITE_ACCESS_TOKEN;
             
-            // Add logic to calculate end time
-            const [hours, minutes] = formData.selectedTime.split(":").map(Number); // Extract hours and minutes
-            const endMinutes = minutes + 15; // Add 15 minutes
+            const [hours, minutes] = formData.selectedTime.split(":").map(Number);
+            const endMinutes = minutes + 15; 
 
-            // Handle cases where minutes exceed 60
             const newHours = hours + Math.floor(endMinutes / 60);
             const newMinutes = endMinutes % 60;
 
-            // Format the result correctly as HH:MM:00
             const endTime = `${String(newHours).padStart(2, "0")}:${String(newMinutes).padStart(2, "0")}:00`;
 
             console.log("start time:", formData.selectedTime);
@@ -109,7 +106,7 @@ const LineUp = () => {
                     customer_contact: formData.mobileNumber,
                     booking_date: formData.selectedDate,
                     start_time: formData.selectedTime,
-                    end_time: endTime, // Use the calculated end time
+                    end_time: endTime,
                     duration_minutes: defaultDuration,
                 }),
             });
