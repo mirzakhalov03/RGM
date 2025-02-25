@@ -1,3 +1,4 @@
+import { BsTelegram } from "react-icons/bs"; 
 import { GiArchiveRegister } from "react-icons/gi";
 import React, { useState } from 'react';
 import './lineup.scss';
@@ -9,6 +10,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'moment/locale/uz'; 
 import locale from 'antd/locale/uz_UZ'; 
 import axios from "axios"; 
+import i18next from "i18next";
+
+const monthNames = {
+    en: [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ],
+    uz: [
+      "Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun",
+      "Iyul", "Avgust", "Sentabr", "Oktabr", "Noyabr", "Dekabr"
+    ]
+  };
+
+  
 
 const LineUp = () => {
     const defaultDuration = 15; 
@@ -136,10 +151,54 @@ const LineUp = () => {
                 console.error(error);
             }
 
-            toast.success(t("lineUp_registrationSuccess"));
+            const date = new Date(formData.selectedDate);
+            const month = date.getMonth(); // 0-based index (0 = January)
+            const day = date.getDate();
+            const currentLang = i18next.language === "uz" ? "uz" : "en";
+
+            toast(
+                <div >
+                  <p className="text-center text-[limegreen] text-[18px font-semibold]">{t("lineUp_registrationSuccess")}</p>
+                  <br />
+                  <div className="line-up-info space-y-2">
+                    <p className="flex justify-between">
+                        <span>{t("lineUp_registeredClient")}:</span>
+                        <span className="text-right">{formData.fullName}</span>
+                    </p>
+                    <p className="flex justify-between">
+                        <span>{t("lineUp_registeredDate")}:</span>
+                        <span className="text-right">{monthNames[currentLang][month]} {day}</span>
+                    </p>
+                    <p className="flex justify-between">
+                        <span>{t("lineUp_registeredTime")}:</span>
+                        <span className="text-right">{formData.selectedTime}</span>
+                    </p>
+                    </div>
+                  <button 
+                    onClick={() => toast.dismiss()} 
+                    className="mt-2 px-4 py-1 bg-[limegreen] text-white rounded-md w-full"
+                  >
+                    OK
+                  </button>
+                  <a href="https://t.me/rgm_clinic">
+                    <button className="mt-2 px-4 py-1 bg-[#38bdf8] text-white rounded-md w-full flex items-center justify-center gap-2">
+                        <BsTelegram />
+                      {t("lineUp_checkOnTg")}
+                    </button>
+                  </a>
+                </div>,
+                {
+                  autoClose: false,
+                  closeOnClick: false,
+                  draggable: false,
+                  closeButton: false,
+                  position: "top-center" // Set position to top-center
+                }
+              );
             resetForm();
 
         } catch (error) {
+            console.error(error);
             toast.error(t("lineUp_registrationFailed"));
         }
     };
@@ -245,13 +304,25 @@ const LineUp = () => {
                         <p className="mb-1">- {t("lineUp_important1")}</p>
                         <p className="mb-1">- {t("lineUp_important3")}</p>
                         <p className="mb-1">- {t("lineUp_important5")}</p>
-                        <p className="mb-1">- {t("lineUp_important6")} <a href="https://t.me/+GhpK0PHEeIdiZWJi" className="ml-3 sm:hover:text-[--softBlue] sm:hover:bg-[white] px-2 py-1 bg-sky-400 text-white rounded-lg" target="_blank">Telegram</a></p>
-                        <p className="mt-4 text-center p-1 bg-[#ffffff8a] text-[crimson] rounded-lg"><b> {t("lineUp_important2")}</b></p>
+                        <p className="mb-1">- {t("lineUp_important6")} <a href="https://t.me/rgm_clinic_group" className="ml-3 sm:hover:text-[--softBlue] sm:hover:bg-[white] px-2 py-1 bg-sky-400 text-white rounded-lg" target="_blank">Telegram</a></p>
+                        {/* <p className="mt-4 text-center p-1 bg-[#ffffff8a] text-[crimson] rounded-lg"><b> {t("lineUp_important2")}</b></p> */}
                     </div>
                 </div>
             </div>
             <Footer />
-            <ToastContainer />
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover
+                theme="light"
+                className="toast-container"
+                />
         </>
     );
 };
