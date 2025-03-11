@@ -88,9 +88,9 @@ const Reviews = () => {
             date={`${t("dateDecember")} 5` }
           />
           <FeedbackCard
-            text="Alloh ishlaringizga baraka bersin, Omin"
-            author="Ulug'bek Xolmirzayev"
-            date={`${t("dateOctober")}, 2023` }
+            text="Bu klinikada juda sifatli hamda hush muomila vrach va hamshiralari bilan alohida maqtovga loyiq. Ozoda shinam eng asosiysi tajribali mutaxassislar tomonidan sizga hizmat koʻrsatiladi "
+            author="Islomjonova Mohichehra"
+            date={`${t("dateMarch")} 11, 2025` }
           />
         </div>
         <div className="w-full p-[50px] flex items-center justify-center">

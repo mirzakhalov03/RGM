@@ -11,6 +11,7 @@ import 'moment/locale/uz';
 import locale from 'antd/locale/uz_UZ'; 
 import axios from "axios"; 
 import i18next from "i18next";
+import { AiOutlineLoading } from "react-icons/ai";
 
 const monthNames = {
     en: [
@@ -36,6 +37,9 @@ const LineUp = () => {
     });
     const [availableTimes, setAvailableTimes] = useState([]); 
     const [loading, setLoading] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    
 
     const excludedTimes = ["12:00", "12:15", "12:30", "12:45"];
 
@@ -89,11 +93,13 @@ const LineUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
 
         if (!formData.selectedTime || !formData.selectedDate) {
             message.error(t("lineUp_chooseTimeError"));
             return;
         }
+        setIsSubmitting(true);
 
         try {
             const token = import.meta.env.VITE_ACCESS_TOKEN;
@@ -200,7 +206,9 @@ const LineUp = () => {
         } catch (error) {
             console.error(error);
             toast.error(t("lineUp_registrationFailed"));
-        }
+        } finally {
+            setIsSubmitting(false); // Re-enable button after request completes
+          }
     };
 
     const formatPhoneNumber = (value) => {
@@ -297,7 +305,18 @@ const LineUp = () => {
                                     />
                                 </span>
                                 <br />
-                                <button className="sm:hover:text-[--softBlue]" type="submit"><GiArchiveRegister className="" />{t("lineUp_registerBtn")}</button>
+                                <button
+                                    className="sm:hover:text-[--softBlue] disabled:opacity-50 disabled:cursor-not-allowed"
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? (
+                                        <AiOutlineLoading className="animate-spin text-xl" />
+                                        ) : (
+                                        <GiArchiveRegister />
+                                        )}
+                                        {t("lineUp_registerBtn")}
+                                </button>
                             </form>
                         </div>
                         <Divider><b>{t("lineUp_importantTitle")}</b></Divider>
