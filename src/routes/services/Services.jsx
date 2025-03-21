@@ -34,7 +34,7 @@ const Services = () => {
             <div className="serviceDesc">
               <p><b>{t("service_brief")} </b>{t("service_desc1")}</p>
               
-              <div className="priceTag"><b>+ 50 000 {t("sum")} </b></div>
+              <div className="priceTag"><b>+ 55 000 {t("sum")} </b></div>
             </div>
           </div>
           <div data-aos="fade-up" className="serviceDropdown">
@@ -45,7 +45,7 @@ const Services = () => {
             </div>
             <div className="serviceDesc">
               <p><b>{t("service_brief")} </b>{t("service_desc2")}</p>
-              <div className="priceTag"><b>45 000 {t("sum")}</b></div>
+              <div className="priceTag"><b>55 000 {t("sum")}</b></div>
             </div>
           </div>
           <div data-aos="fade-up" className="serviceDropdown">
@@ -57,7 +57,7 @@ const Services = () => {
             <div className="serviceDesc">
               <p><b>{t("service_brief")} </b>{t("service_desc3")}</p>
               
-              <div className="priceTag"><b>45 000 {t("sum")}</b></div>
+              <div className="priceTag"><b>55 000 {t("sum")}</b></div>
             </div>
           </div>
           <div data-aos="fade-up" className="serviceDropdown">
@@ -69,7 +69,7 @@ const Services = () => {
             <div className="serviceDesc">
               <p><b>{t("service_brief")} </b>{t("service_desc4")}</p>
              
-              <div className="priceTag"><b>45 000 {t("sum")}</b></div>
+              <div className="priceTag"><b>55 000 {t("sum")}</b></div>
             </div>
           </div>
           <div data-aos="fade-up" className="serviceDropdown">
@@ -81,7 +81,7 @@ const Services = () => {
             <div className="serviceDesc">
               <p><b>{t("service_brief")} </b>{t("service_desc5")}</p>
               
-              <div className="priceTag"><b>60 000 {t("sum")}</b></div>
+              <div className="priceTag"><b>70 000 {t("sum")}</b></div>
             </div>
           </div>
           
