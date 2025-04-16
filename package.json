@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
+    "@vercel/analytics": "^1.5.0",
     "@vis.gl/react-google-maps": "^1.4.2",
     "antd": "^5.21.4",
     "aos": "^2.3.4",
